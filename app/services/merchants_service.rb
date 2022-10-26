@@ -13,18 +13,13 @@ class MerchantsService
     end
   end
 
-  def self.merchants_data
-    response = conn.get('api/v1/merchants')
+  def self.merchant_data(merchant_id)
+    response = conn.get("api/v1/merchants/#{merchant_id}")
     parse(response.body)
   end
 
-  # def self.get_rated_movies_asc(page_number)
-  #   response = conn.get("/3/movie/top_rated?language=en-US&page=#{page_number}")
-  #   parse(response.body)
-  # end
-
-  # def self.search(search_params, page)
-  #   response = conn.get("/3/search/movie?query=#{search_params}&page=#{page}")
-  #   parse(response.body)
-  # end
+  def self.merchant_items_data(merchant_id)
+    response = conn.get("api/v1/merchants/#{merchant_id}/items")
+    parse(response.body)
+  end
 end 
